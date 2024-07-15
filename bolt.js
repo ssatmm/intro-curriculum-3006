@@ -1,7 +1,5 @@
 'use strict';
 const bolt = require('@slack/bolt');
-const dotenv = require ('dotenv');
-dotenv.config();
 
 const app = new bolt.App({
   token: process.env.SLACK_BOT_TOKEN,
@@ -11,7 +9,7 @@ const app = new bolt.App({
 });
 
 app.message(/hello/i, ({message, say}) => {
-  say('こんにちは！');
+  say(`こんにちは！ <@${message.user}>さん`);
 });
 
 app.start();
